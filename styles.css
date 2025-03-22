@@ -3,14 +3,14 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #2001;
 }
 
 /* En-tête */
 header {
     background-color: #007BFF;
     color: #fff;
-    padding: 15px;
+    padding: 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -40,6 +40,7 @@ header h1 {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-weight: bold;
 }
 
 .menu-button:hover {
@@ -55,11 +56,12 @@ header h1 {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     z-index: 1;
+    font-weight: bold;
 }
 
 .menu-content a {
     color: #333;
-    padding: 10px 12px; /* Espacement réduit pour mobile */
+    padding: 15px 18px; /* Espacement réduit pour mobile */
     text-decoration: none;
     display: block;
     transition: background-color 0.3s ease;
@@ -79,7 +81,7 @@ header h1 {
 .formation2-section {
     width: 90%; /* Largeur relative pour mobile */
     text-align: center;
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 15px;
@@ -133,7 +135,9 @@ video-container {
 }
 
 .slider-button:hover {
-    background-color: #555;
+    background-color: #02e946;
+    color: #333;
+    font-weight: bold;
 }
 
 /* Media Queries pour les écrans très petits */
@@ -169,7 +173,7 @@ video-container {
 
     .slider-button {
         padding: 6px 12px;
-        font-size: 12px;
+        font-size: 14px;
     }
 }
 
@@ -187,7 +191,7 @@ footer {
     background-color: #34495e;
     padding: 10px;
     margin-bottom: 20px;
-    border-radius: 5px;
+    border-radius: 75px;
 }
 
 .trust-banner p {
