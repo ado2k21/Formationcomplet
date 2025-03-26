@@ -59,3 +59,89 @@ document.addEventListener('keydown', function (e) {
         e.preventDefault();
     }
 });
+
+// Bloque le clic droit et le drag sur toutes les vidéos
+document.querySelectorAll('video').forEach(video => {
+  video.addEventListener('contextmenu', e => e.preventDefault());
+  video.addEventListener('dragstart', e => e.preventDefault());
+});
+
+// Bloquer F12 et PrintScreen
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'F12' || e.key === 'PrintScreen') {
+    alert('Action interdite');
+    e.preventDefault();
+  }
+});
+
+// Pause vidéo si l'onglet est inactif (anti OBS / capture)
+document.addEventListener('visibilitychange', function() {
+  const video = document.querySelector('video');
+  if (video) {
+    if (document.hidden) {
+      video.pause();
+    } else {
+      video.play();
+    }
+  }
+});
+
+// Ajout de la fonctionnalité de swipe pour le slider
+let touchStartX = 0;
+let touchEndX = 0;
+
+const slider = document.querySelector('.slider');
+
+slider.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+});
+
+slider.addEventListener('touchmove', (e) => {
+    touchEndX = e.touches[0].clientX;
+});
+
+slider.addEventListener('touchend', () => {
+    const swipeDistance = touchEndX - touchStartX;
+
+    // Si la distance de swipe est suffisante (par exemple, 50 pixels)
+    if (Math.abs(swipeDistance) > 50) {
+        if (swipeDistance > 0) {
+            // Swipe vers la droite : slide précédente
+            currentSlide = (currentSlide > 0) ? currentSlide - 1 : slides.length - 1;
+        } else {
+            // Swipe vers la gauche : slide suivante
+            currentSlide = (currentSlide < slides.length - 1) ? currentSlide + 1 : 0;
+        }
+        showSlide(currentSlide);
+    }
+});
+
+// Générer les points indicateurs
+const sliderDots = document.querySelector('.slider-dots');
+
+slides.forEach((slide, index) => {
+    const dot = document.createElement('div');
+    dot.classList.add('slider-dot');
+    if (index === 0) dot.classList.add('active'); // Activer le premier point
+    dot.addEventListener('click', () => {
+        currentSlide = index;
+        showSlide(currentSlide);
+    });
+    sliderDots.appendChild(dot);
+});
+
+// Fonction pour mettre à jour les points indicateurs
+function updateDots(index) {
+    const dots = document.querySelectorAll('.slider-dot');
+    dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+    });
+}
+
+// Modifier la fonction showSlide pour inclure la mise à jour des points
+function showSlide(index) {
+    slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+    });
+    updateDots(index); // Mettre à jour les points indicateurs
+}

@@ -93,7 +93,22 @@ video-container {
     max-width: 560px;
     margin-bottom: 20px;
     position: relative;
+    user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: auto;
 }
+
+/* Anti-capture overlay */
+.anti-capture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.02); /* Presque invisible */
+  pointer-events: none;
+}
+
 
 .video-container video {
     width: 100%;
@@ -138,6 +153,27 @@ video-container {
     background-color: #02e946;
     color: #333;
     font-weight: bold;
+}
+
+/* Styles pour les points indicateurs */
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.slider-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.slider-dot.active {
+    background-color: #007BFF; /* Couleur du point actif */
 }
 
 /* Media Queries pour les écrans très petits */
@@ -238,6 +274,62 @@ footer {
 
 .footer-section ul li a:hover {
     color: #007BFF;
+}
+
+/* Style général */
+.contact-banner {
+    position: ;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: none;
+    padding: 12px 0;
+    box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 1000;
+    font-family: Arial, sans-serif;
+}
+
+.contact-banner h3 {
+    margin: 0 0 12px 0;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.social-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.social-icon:hover {
+    transform: scale(1.15);
+}
+
+/* Couleurs officielles des réseaux */
+.gmail { background: #EA4335; } /* Rouge Gmail */
+.instagram { 
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+} /* Dégradé Instagram */
+.whatsapp { background: #25D366; } /* Vert WhatsApp */
+.tiktok { background: #000000; } /* Noir TikTok */
+
+.social-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: white; /* Icônes blanches pour contraste */
 }
 
 /* Copyright */
